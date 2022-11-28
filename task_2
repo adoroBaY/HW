@@ -1,0 +1,15 @@
+import functools
+import tracemalloc
+
+
+def memory(func):
+
+    @functools.wraps(func)
+    def wraps(*args, **kwargs):
+        tracemalloc.start()
+        func(*args, **kwargs)
+        snapshot = tracemalloc.take_snapshot()
+        tracemalloc.stop()
+        stats = snapshot.statistics('Traceback')[0]
+        print("Total allocated size: %.1f MB" % (stats.size / 1024))
+    return wraps
