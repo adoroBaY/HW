@@ -1,6 +1,6 @@
 import functools
+import statistics
 import tracemalloc
-
 
 def memory(func):
 
@@ -10,6 +10,6 @@ def memory(func):
         func(*args, **kwargs)
         snapshot = tracemalloc.take_snapshot()
         tracemalloc.stop()
-        stats = snapshot.statistics('Traceback')[0]
-        print("Total allocated size: %.1f MB" % (stats.size / 1024))
+        min_memory, max_memory = snapshot.statistics('Traceback')
+        print("Total allocated size: %.1f MB" % (stat.size / 1024))
     return wraps
