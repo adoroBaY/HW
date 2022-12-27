@@ -32,11 +32,12 @@ def generate_students(count):
         password = faker.password()
         birthday = faker.birthday()
         students_data.append([first_name, last_name, email, password, birthday])
-    with open("students.csv", "w") as file:
+    with open('students.csv', 'w') as file:
         writer = csv.writer(file)
-            for row in students_data:
-                writer.writerow(row)
+        for row in students_data:
+            writer.writerow(row)
     return students_data
+
 
 
 @app.route("/bitcoin")
