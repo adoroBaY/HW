@@ -70,5 +70,5 @@ def get_bitcoin_value(currency, count):
 
 
 
-app.run(port=5005, debug=True)
+app.run(port=5001, debug=True)
 
